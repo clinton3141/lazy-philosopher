@@ -73,4 +73,23 @@ scrape = (url) => {
   request(url, process_page);
 }
 
-scrape("https://en.wikipedia.org/wiki/Clinton");
+if (process.argv.length !== 3) {
+	console.log("Usage: node index.js subject");
+	console.log(" ");
+	console.log("example: node index.js \"Nemesis (roller coaster)\"");
+	return;
+}
+
+let topic = process.argv[2].split(" ").reduce(function (words, word) {
+	if (words.length === 0) {
+		words = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+	}
+	else {
+		words = words + "_" + word.toLowerCase();
+	}
+
+	return words;
+}, "");
+
+console.log("Finding out how philosophical " + topic + " is");
+scrape("https://en.wikipedia.org/wiki/" + topic);
