@@ -74,21 +74,21 @@ scrape = (url) => {
 }
 
 if (process.argv.length !== 3) {
-	console.log("Usage: node index.js subject");
-	console.log(" ");
-	console.log("example: node index.js \"Nemesis (roller coaster)\"");
-	return;
+  console.log("Usage: node index.js subject");
+  console.log(" ");
+  console.log("example: node index.js \"Nemesis (roller coaster)\"");
+  return;
 }
 
 let topic = process.argv[2].split(" ").reduce(function (words, word) {
-	if (words.length === 0) {
-		words = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
-	}
-	else {
-		words = words + "_" + word.toLowerCase();
-	}
+  if (words.length === 0) {
+    words = word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+  }
+  else {
+    words = words + "_" + word.toLowerCase();
+  }
 
-	return words;
+  return words;
 }, "");
 
 console.log("Finding out how philosophical " + topic + " is");
