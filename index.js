@@ -1,14 +1,10 @@
 let cheerio = require("cheerio");
 let request = require("request");
 
-const bracketed = /(\([^)]+\))/g;
-
 const chain = [];
 
 process_page = (error, response, html) => {
   if (error) return console.log(error);
-
-  html.replace(bracketed, "");
 
   let dom = cheerio.load(html);
 
