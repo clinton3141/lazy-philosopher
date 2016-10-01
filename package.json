@@ -1,0 +1,24 @@
+{
+  "name": "lazy-philosopher",
+  "version": "0.0.1",
+  "description": "Because who wants to play the Philosopher game when a computer can do it for you",
+  "main": "index.js",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "request": "^2.75.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iblamefish/lazy-philosopher.git"
+  },
+  "author": "Clinton Montague",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iblamefish/lazy-philosopher/issues"
+  },
+  "homepage": "https://github.com/iblamefish/lazy-philosopher#readme"
+}
