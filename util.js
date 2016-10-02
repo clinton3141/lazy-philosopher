@@ -24,7 +24,11 @@ valid_links = (html) => {
 
       p.childNodes.forEach(function(node) {
         if (bracket_count === 0 && node.type === "tag" && node.name === "a") {
-          anchors.push(node);
+
+          // links to other sites don't count
+          if (!node.attribs.class || node.attribs.class.split(" ").indexOf("extiw") === -1) {
+            anchors.push(node);
+          }
         }
 
         if (node.type === "text") {
