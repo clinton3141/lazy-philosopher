@@ -1,15 +1,10 @@
-let Scraper = require("./scraper");
-let { get_next_topic, valid_links } = require("./util");
+let { get_next_topic, scrape, valid_links } = require("./util");
 
 const base = "https://en.wikipedia.org/wiki/";
 
 const target = "Philosophy";
 
 const chain = [];
-
-let scraper = new Scraper({
-  base: base
-});
 
 function init() {
   let topic = process.argv[2].split(" ").reduce(function (words, word) {
@@ -33,7 +28,7 @@ function visit_article(topic) {
     return console.log("Success! Got there in " + chain.length);
   }
 
-  scraper.request(topic)
+  scrape(base + topic)
     .then((result) => valid_links(result.data))
     .then((anchors) => {
         return get_next_topic(anchors, chain)

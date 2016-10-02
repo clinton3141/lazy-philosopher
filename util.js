@@ -1,4 +1,21 @@
 let cheerio = require("cheerio");
+let request = require("request");
+
+function scrape(url, callback) {
+  return new Promise(function(resolve, reject) {
+    request(url, function(error, response, html) {
+      if (error) {
+        reject(error);
+      }
+      else {
+        resolve({
+          response: response,
+          data: html
+        });
+      }
+    });
+  });
+}
 
 valid_links = (html) => {
   return new Promise((resolve, reject) => {
@@ -74,4 +91,4 @@ function get_next_topic(anchors, previsited_anchors) {
   });
 }
 
-module.exports = { get_next_topic, valid_links }
+module.exports = { get_next_topic, scrape, valid_links }
