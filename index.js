@@ -4,8 +4,6 @@ const base = "https://en.wikipedia.org/wiki/";
 
 const target = "Philosophy";
 
-const chain = [];
-
 function init() {
   let topic = process.argv[2].split(" ").reduce(function (words, word) {
     if (words.length === 0) {
@@ -20,10 +18,10 @@ function init() {
 
   console.log("Finding out how philosophical " + topic + " is");
 
-  visit_article(topic);
+  visit_article(topic, []);
 }
 
-function visit_article(topic) {
+function visit_article(topic, chain) {
   if (topic === target) {
     return console.log("Success! Got there in " + chain.length);
   }
@@ -40,7 +38,7 @@ function visit_article(topic) {
             return topic.url;
           });
     })
-    .then(visit_article)
+    .then((new_topic) => visit_article(new_topic, chain))
     .catch(function (message) {
       console.warn(message);
     });
