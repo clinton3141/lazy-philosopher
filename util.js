@@ -17,8 +17,8 @@ function scrape(url, callback) {
   });
 }
 
-valid_links = (html) => {
-  return new Promise((resolve, reject) => {
+function valid_links(html) {
+  return new Promise(function(resolve, reject) {
     let dom = cheerio.load(html);
     let article = dom("#mw-content-text");
     let anchors = [];
