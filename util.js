@@ -4,6 +4,10 @@ valid_links = (html) => {
   return new Promise((resolve, reject) => {
     let dom = cheerio.load(html);
 
+    if (dom(".noarticletext").length) {
+      return reject("Article doesn't exist!");
+    }
+
     dom(".infobox, .metadata, .tright").remove();
 
     let paragraphs = dom("#mw-content-text p").get();
