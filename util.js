@@ -3,16 +3,16 @@ let cheerio = require("cheerio");
 valid_links = (html) => {
   return new Promise((resolve, reject) => {
     let dom = cheerio.load(html);
+    let article = dom("#mw-content-text");
+    let anchors = [];
 
-    if (dom(".noarticletext").length) {
+    if (article.find(".noarticletext").length) {
       return reject("Article doesn't exist!");
     }
 
-    dom(".infobox, .metadata, .tright").remove();
+    article.find(".infobox, .metadata, .tright, >table").remove();
 
-    let paragraphs = dom("#mw-content-text p").get();
-
-    let anchors = [];
+    let paragraphs = article.find("p").get();
 
     // Links are only valid if they are not within a pair of parens. It turns out
     // that `html.replace(/(\([^)]+\))/g)` is a bit aggressive, so instead this
