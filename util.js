@@ -22,6 +22,8 @@ function valid_links(html) {
     let dom = cheerio.load(html);
     let article = dom("#mw-content-text");
     let anchors = [];
+    let left_paren_count = 0;
+    let right_paren_count = 0;
 
     if (article.find(".noarticletext").length) {
       return reject("Article doesn't exist!");
