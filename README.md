@@ -2,7 +2,7 @@
 
 Because I wanted to play the [wikipedia philosophy game](https://en.wikipedia.org/wiki/Wikipedia:Getting_to_Philosophy), but am too lazy to follow the links myself.
 
-Usage: `node index.php "Name of topic"`
+Usage: `node index.js "Name of topic"`
 
 ```
 $ node index.js Batman
